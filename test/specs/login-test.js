@@ -29,24 +29,24 @@ describe('Login page test', () => {
         });
     });
     
-    describe('Login with correct user and pass', () => {
+    describe('Login with standard_user', () => {
         beforeAll("Refresh browser", () => {
             browser.refresh();
         });
 
-        it('Correct user and pass, login', () => {
+        it('Correct user and pass, login and go inventory page', () => {
             LoginPage.register('standard_user', 'secret_sauce');
             expect(browser).toHaveUrlContaining('inventory.html')
             browser.pause(2000);
         });
     });
 
-    describe('Login with correct user and pass', () => {
-        beforeAll("Refresh browser", () => {
+    describe('Login with performance_glitch_user', () => {
+        beforeAll("Back browser", () => {
             browser.back();
         });
 
-        it('Correct user and pass, login', () => {
+        it('Correct user and pass, login and go inventory page after a few seconds', () => {
             LoginPage.register('performance_glitch_user', 'secret_sauce');
             // browser.waitUntil(
             //     () => $('//span[@class="title"]').getText() === 'Products',
