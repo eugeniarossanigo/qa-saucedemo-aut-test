@@ -26,6 +26,17 @@ exports.config = {
     specs: [
         './test/specs/**/*.js'
     ],
+    // specs: [
+    //     ['./test/specs/login-test.js'],
+    //     ['./test/specs/inventary-test.js'],
+    //     ['./test/specs/item-product-test.js'],
+    //     ['./test/specs/cart-test.js'],
+    //     ['./test/specs/checkout-one-test.js'],
+    //     ['./test/specs/checkout-two-test.js'],
+    //     ['./test/specs/checkout-complete-test.js'],
+    //     ['./test/specs/e2e-standard-test.js'],
+    //     ['./test/specs/e2e-performance-test.js']
+    // ],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
