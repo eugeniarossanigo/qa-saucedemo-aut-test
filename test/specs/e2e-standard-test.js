@@ -9,17 +9,24 @@ describe('Checkout complete page test', () => {
     beforeAll("Open browser with standard_user", () => {
         LoginPage.open();
         LoginPage.login('standard_user', 'secret_sauce');
+        InventoryPage.addOrRemoveProduct(0);
+        browser.pause(2000);
+        InventoryPage.addOrRemoveProduct(1);
+        browser.pause(2000);
+        InventoryPage.addOrRemoveProduct(2);
+        browser.pause(2000);
+        InventoryPage.cartLink.click();
+        browser.pause(2000);
+        CartPage.checkoutBtn.click();
+        browser.pause(2000);
+        CheckoutOnePage.register('Eugenia', 'Rossanigo', '2000');
+        browser.pause(2000);
+        CheckoutTwoPage.finishBtn.click();
+        browser.pause(2000);
     });
     describe('Button back home test', () => {
         it('Click back home button backs to inventory page', () => {
-            InventoryPage.addOrRemoveProduct(0);
-            InventoryPage.addOrRemoveProduct(1);
-            InventoryPage.cartLink.click();
-            CartPage.checkoutBtn.click();
-            CheckoutOnePage.register('Eugenia', 'Rossanigo', '2000');
-            CheckoutTwoPage.finishBtn.click();
-            CheckoutCompletePage.BackHomeBtn.click();
-            expect(browser).toHaveUrlContaining('inventory.html');
+            expect(CheckoutCompletePage.headerTxt).toHaveText('THANK YOU FOR YOUR ORDER');
             browser.pause(2000);
         });
     });

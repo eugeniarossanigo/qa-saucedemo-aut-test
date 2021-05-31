@@ -11,14 +11,13 @@ describe('Checkout one page test', () => {
     describe('Button cancel test', () => {
         it('Click cancel back to product page', () => {
             InventoryPage.addOrRemoveProduct(0);
-            InventoryPage.addOrRemoveProduct(1);
+            InventoryPageutBtn.addOrRemoveProduct(1);
             InventoryPage.cartLink.click();
             CartPage.checkoutBtn.click();
             CheckoutOnePage.cancelBtn.click();
             expect(browser).toHaveUrlContaining('cart.html');
             browser.pause(2000);
         });
-        
     });
     describe('Checkout info tests', () => {
         it('Empty inputs, display error msg', () => {
@@ -48,5 +47,4 @@ describe('Checkout one page test', () => {
             browser.pause(2000);
         });
     });
-
 })

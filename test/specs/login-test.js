@@ -45,6 +45,11 @@ describe('Login page test', () => {
         beforeAll('Refresh browser', () => {
             browser.refresh();
         });
+        it('Standard user and wrong pass display error msg', () => {
+            LoginPage.login('standard_user', 'wrong_pass');
+            expect(LoginPage.msgError).toHaveText('Epic sadface: Username and password do not match any user in this service');
+            browser.pause(2000);
+        });
         it('Standard user, correct login to inventory page', () => {
             LoginPage.login('standard_user', 'secret_sauce');
             expect(browser).toHaveUrlContaining('inventory.html');
@@ -61,33 +66,17 @@ describe('Login page test', () => {
             browser.pause(2000);
         });
     });
-    describe('Login with locked_out_user', () => {
+    describe('Login with performance_glitch_user', () => {
         beforeAll('Back browser', () => {
             browser.back();
         });
         it('Performance user, correct login to inventory page after a few seconds', () => {
             LoginPage.login('performance_glitch_user', 'secret_sauce');
+            browser.waitUntil(
+                () => $('.shopping_cart_link').isClickable(),
+                {timeout: 7000}
+            );
             expect(browser).toHaveUrlContaining('inventory.html')
-            browser.pause(2000);
         });
     });
 })
-
-// describe('Login with performance_glitch_user', () => {
-//     beforeAll('Back browser', () => {
-//         browser.back();
-//     });
-//     it('Correct user and pass, login and go inventory page after a few seconds', () => {
-//         LoginPage.login('performance_glitch_user', 'secret_sauce');
-        // browser.waitUntil(
-        //     () => $('//span[@class="title"]').getText() === 'Products',
-        //     {
-        //         timeout: 5000,
-        //         //timeoutMsg: 'expected text to be different after 5s'
-        //     }
-        // );
-        //browser.setTimeout({'pageLoad': 2000})
-        //expect(browser).toHaveUrlContaining('inventory.html')
-        //browser.pause(2000);
-//     });
-// });

@@ -77,9 +77,15 @@ describe('Inventory page test', () => {
             expect(InventoryPage.productBtn[0]).toHaveText('ADD TO CART');
             browser.pause(2000);
         });
-        it('Product added shows cart displayed', () => {
+        it('One product added shows cart displayed', () => {
             InventoryPage.addOrRemoveProduct(0);
             expect(InventoryPage.badgeLink).toBeDisplayed();
+            browser.pause(2000);
+        });
+        it('All product added, shows 6 in cart', () => {
+            InventoryPage.addOrRemoveProduct(0);
+            InventoryPage.addOrRemoveAllProducts();
+            expect(InventoryPage.badgeLink).toHaveText('6');
             browser.pause(2000);
         });
         it('Click image product redirects to product page', () => {
@@ -102,31 +108,6 @@ describe('Inventory page test', () => {
             browser.pause(2000);
         });
     });
-    describe('Social media links', () => {
-        it('Twitter link redirects to twitter page', () => {
-            browser.back();
-            InventoryPage.twitterLink.click();
-            browser.pause(2000);
-            browser.switchWindow('https://twitter.com/saucelabs');
-            browser.pause(2000);
-            expect(browser).toHaveUrl('https://twitter.com/saucelabs');
-            browser.pause(2000);
-        });
-        it('Facebook link redirects to facebook page', () => {
-            browser.switchWindow('https://www.saucedemo.com/inventory.html');
-            InventoryPage.facebookLink.click();
-            browser.pause(2000);
-            browser.switchWindow('https://www.facebook.com/saucelabs');
-            browser.pause(2000);
-            expect(browser).toHaveUrl('https://www.facebook.com/saucelabs');
-            browser.pause(2000);
-        });
-        it('Linkedin link redirects to linkedin page', () => {
-            browser.switchWindow('https://www.saucedemo.com/inventory.html');
-            expect(InventoryPage.linkedinLink).toHaveHref('https://www.linkedin.com/company/sauce-labs/');
-            browser.pause(2000);
-        });
-    });
     describe('Problem user img test', () => {
         it('Shows different image', () => {
             InventoryPage.menuList(InventoryPage.sidebarLogout);
@@ -136,14 +117,3 @@ describe('Inventory page test', () => {
         });
     });
 })
-
-// AfterEach("Open browser with standard_user", () => {
-//     browser.reloadSession();
-// });
-
-// describe('Sort tests', () => {
-    //     it('', () => {
-    //         InventoryPage;
-    //         expect(browser);
-    //     });
-    // });

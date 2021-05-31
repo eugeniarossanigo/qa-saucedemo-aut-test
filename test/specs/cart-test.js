@@ -27,7 +27,6 @@ describe('Cart page test', () => {
             browser.pause(2000);
         });
     });
-
     describe('Buttons cart page tests', () => {
         it('Click continue shopping button and redirects to inventory page', () => {
             CartPage.continueShopBtn.click();

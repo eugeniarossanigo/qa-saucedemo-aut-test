@@ -8,9 +8,20 @@ describe('Item product test', () => {
         LoginPage.login('standard_user', 'secret_sauce');
     });
     describe('Product and cart tests', () => {
-        it('Click add product button and shows Remove', () => {
+        it('Price is the same in both pages', () => {
+            const itemPrice = InventoryPage.productPrice.getText();
             InventoryPage.productTitle.click();
+            expect(ItemProductPage.itemProductPrice).toHaveText(itemPrice);
             browser.pause(2000);
+        });
+        it('Title is the same in both pages', () => {
+            browser.back();
+            const itemTitle = InventoryPage.productTitle.getText();
+            InventoryPage.productTitle.click();
+            expect(ItemProductPage.itemProductTitle).toHaveText(itemTitle);
+            browser.pause(2000);
+        });
+        it('Click add product button and shows Remove', () => {
             ItemProductPage.itemProductBtn.click();
             expect(ItemProductPage.itemProductBtn).toHaveText('REMOVE');
             browser.pause(2000);
@@ -30,6 +41,33 @@ describe('Item product test', () => {
         it('Click back to products page backs to inventory page', () => {
             ItemProductPage.backToBtn.click();
             expect(browser).toHaveUrlContaining('inventory.html');
+            browser.pause(2000);
+        });
+    });
+    describe('Social media links', () => {
+        it('Twitter link redirects to twitter page', () => {
+            browser.back();
+            ItemProductPage.twitterLink.click();
+            browser.pause(2000);
+            browser.switchWindow('https://twitter.com/saucelabs');
+            browser.pause(2000);
+            expect(browser).toHaveUrl('https://twitter.com/saucelabs');
+            browser.pause(3000);
+        });
+        it('Facebook link redirects to facebook page', () => {
+            browser.switchWindow('https://www.saucedemo.com/inventory-item.html?id=4');
+            browser.pause(3000);
+            ItemProductPage.facebookLink.click();
+            browser.pause(2000);
+            browser.switchWindow('https://www.facebook.com/saucelabs');
+            browser.pause(2000);
+            expect(browser).toHaveUrl('https://www.facebook.com/saucelabs');
+            browser.pause(3000);
+        });
+        it('Linkedin link redirects to linkedin page', () => {
+            browser.switchWindow('https://www.saucedemo.com/inventory-item.html?id=4');
+            browser.pause(3000);
+            expect(ItemProductPage.linkedinLink).toHaveHref('https://www.linkedin.com/company/sauce-labs/');
             browser.pause(2000);
         });
     });
