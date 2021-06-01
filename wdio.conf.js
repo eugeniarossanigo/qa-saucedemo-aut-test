@@ -23,20 +23,20 @@ exports.config = {
     // then the current working directory is where your `package.json` resides, so `wdio`
     // will be called from there.
     //
-    specs: [
-        './test/specs/**/*.js'
-    ],
     // specs: [
-    //     ['./test/specs/login-test.js'],
-    //     ['./test/specs/inventory-test.js'],
-    //     ['./test/specs/item-product-test.js'],
-    //     ['./test/specs/cart-test.js'],
-    //     ['./test/specs/checkout-one-test.js'],
-    //     ['./test/specs/checkout-two-test.js'],
-    //     ['./test/specs/checkout-complete-test.js'],
-    //     ['./test/specs/e2e-standard-test.js'],
-    //     ['./test/specs/e2e-performance-test.js']
+    //     './test/specs/**/*.js'
     // ],
+    specs: [
+        './test/specs/login-test.js',
+        './test/specs/inventory-test.js',
+        './test/specs/item-product-test.js',
+        './test/specs/cart-test.js',
+        './test/specs/checkout-one-test.js',
+        './test/specs/checkout-two-test.js',
+        './test/specs/checkout-complete-test.js',
+        './test/specs/e2e-standard-test.js',
+        './test/specs/e2e-performance-test.js'
+    ],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -79,6 +79,7 @@ exports.config = {
         // excludeDriverLogs: ['bugreport', 'server'],
     // }
     {
+        maxInstances: 1,
         browserName: 'firefox',
         acceptInsecureCerts: true
     }

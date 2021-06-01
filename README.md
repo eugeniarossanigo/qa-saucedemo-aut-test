@@ -1,11 +1,13 @@
 **qa-saucedemo-aut-test**
 
-Automation testing in saucedemo.com. Runs only in firefox.
+Automation testing https://www.saucedemo.com
+Runs only in firefox.
 
 ---
 
 ## Installation
 
+* firefox
 * npm
 * webdriverIo
 
@@ -37,6 +39,7 @@ services: ['chromedriver'],
 And commented firefox.
 ```bash
 {
+maxInstances:1,
 browserName: 'firefox',
 acceptInsecureCerts: true
 }
