@@ -28,7 +28,7 @@ exports.config = {
     ],
     // specs: [
     //     ['./test/specs/login-test.js'],
-    //     ['./test/specs/inventary-test.js'],
+    //     ['./test/specs/inventory-test.js'],
     //     ['./test/specs/item-product-test.js'],
     //     ['./test/specs/cart-test.js'],
     //     ['./test/specs/checkout-one-test.js'],

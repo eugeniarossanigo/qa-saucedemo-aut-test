@@ -11,7 +11,7 @@ describe('Checkout one page test', () => {
     describe('Button cancel test', () => {
         it('Click cancel back to product page', () => {
             InventoryPage.addOrRemoveProduct(0);
-            InventoryPageutBtn.addOrRemoveProduct(1);
+            InventoryPage.addOrRemoveProduct(1);
             InventoryPage.cartLink.click();
             CartPage.checkoutBtn.click();
             CheckoutOnePage.cancelBtn.click();

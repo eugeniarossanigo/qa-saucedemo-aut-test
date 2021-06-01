@@ -9,13 +9,23 @@ describe('Checkout two page test', () => {
         LoginPage.open();
         LoginPage.login('standard_user', 'secret_sauce');
     });
-    describe('Buttons cancel and finish test', () => {
-        it('Click cancel button back to inventory page', () => {
+    describe('Text price and item test', () => {
+        it('Item exist in checkout', () => {
             InventoryPage.addOrRemoveProduct(0);
-            InventoryPage.addOrRemoveProduct(1);
+            InventoryPage.addOrRemoveProduct(2);
             InventoryPage.cartLink.click();
             CartPage.checkoutBtn.click();
-            CheckoutOnePage.register('Eugenia', 'Rossanigo', '2000');
+            CheckoutOnePage.register('Eugenia', 'Rossanigo', '2000');    
+            expect(CheckoutTwoPage.itemLabel).toExist();
+            browser.pause(2000);
+        });
+        it('Add product 1 + product 3 to be 45,98', () => {    
+            expect(CheckoutTwoPage.subtotalTxt).toHaveTextContaining('45.98');
+            browser.pause(2000);
+        });
+    });
+    describe('Buttons cancel and finish test', () => {
+        it('Click cancel button back to inventory page', () => {
             CheckoutTwoPage.cancelTwoBtn.click()
             expect(browser).toHaveUrlContaining('inventory.html');
             browser.pause(2000);

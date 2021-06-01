@@ -1,6 +1,4 @@
-const Page = require('./page');
-
-class LoginPage extends Page {
+class LoginPage {
     get inputUser () {return $('#user-name')}
     get inputPass () {return $('[id="password"]')}
     get btnLogin () {return $('#login-button')}
@@ -13,7 +11,7 @@ class LoginPage extends Page {
         this.btnLogin.click();
     }
     open () {
-        return super.open('');
+        return browser.url('https://www.saucedemo.com');
     }
 }
 

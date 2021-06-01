@@ -1,6 +1,4 @@
-const Page = require('./page');
-
-class InventoryPage extends Page {
+class InventoryPage {
     get burgerMenu () {return $('#react-burger-menu-btn')}
     get sidebarAllItems () {return $('#inventory_sidebar_link')}
     get sidebarAbout () {return $('#about_sidebar_link')}
